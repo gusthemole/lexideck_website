@@ -1,0 +1,150 @@
+/* Tailwind base - core framework */
+@tailwind base;
+
+/* Tailwind components - component classes */
+@tailwind components;
+
+/* Tailwind utilities - utility classes */
+@tailwind utilities;
+
+/* Custom base styles */
+@layer base {
+  html {
+    @apply scroll-smooth;
+  }
+
+  body {
+    @apply bg-black text-white antialiased;
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    @apply font-bold;
+  }
+}
+
+/* Custom component styles */
+@layer components {
+  /* Navigation styles */
+  .nav-link {
+    @apply text-white hover:text-cyan-400 px-3 py-2 rounded-md text-sm font-medium transition-colors duration-300;
+  }
+
+  /* Button styles */
+  .btn-primary {
+    @apply px-6 py-3 border border-transparent text-base font-medium rounded-md 
+           text-black bg-cyan-500 hover:bg-blue-500 transition-colors duration-300
+           transform hover:-translate-y-0.5;
+  }
+
+  /* Card styles */
+  .feature-card {
+    @apply bg-black p-6 rounded-lg transform transition-all duration-300 
+           hover:scale-105 border border-blue-900 hover:border-cyan-500;
+  }
+
+  .agent-card {
+    @apply relative group bg-black bg-opacity-60 p-6 rounded-lg 
+           transform transition-all duration-300 hover:-translate-y-1 
+           hover:shadow-xl border border-blue-900 hover:border-cyan-500;
+  }
+
+  /* Gradient text */
+  .gradient-text {
+    @apply bg-clip-text text-transparent bg-gradient-to-r from-cyan-500 to-blue-500;
+  }
+}
+
+/* Custom utilities */
+@layer utilities {
+  /* Backdrop blur */
+  .backdrop-blur {
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+  }
+
+  /* Custom animations */
+  .animate-float {
+    animation: float 6s ease-in-out infinite;
+  }
+
+  @keyframes float {
+    0%, 100% {
+      transform: translateY(0);
+    }
+    50% {
+      transform: translateY(-10px);
+    }
+  }
+
+  /* Particle animation */
+  .particle {
+    @apply absolute rounded-full bg-cyan-500 pointer-events-none;
+    transition: all 0.5s linear;
+  }
+
+  /* Grid background */
+  .grid-bg {
+    @apply absolute inset-0 overflow-hidden pointer-events-none opacity-10;
+  }
+
+  /* Custom scrollbar */
+  .custom-scrollbar {
+    scrollbar-width: thin;
+    scrollbar-color: theme('colors.cyan.500') theme('colors.black');
+  }
+
+  .custom-scrollbar::-webkit-scrollbar {
+    width: 8px;
+  }
+
+  .custom-scrollbar::-webkit-scrollbar-track {
+    @apply bg-black;
+  }
+
+  .custom-scrollbar::-webkit-scrollbar-thumb {
+    @apply bg-cyan-500 rounded-full;
+  }
+}
+
+/* Responsive utilities */
+@screen sm {
+  .hero-text {
+    @apply text-6xl;
+  }
+}
+
+@screen md {
+  .agent-grid {
+    @apply grid-cols-2;
+  }
+}
+
+@screen lg {
+  .agent-grid {
+    @apply grid-cols-3;
+  }
+}
+
+/* Dark mode specifics */
+@media (prefers-color-scheme: dark) {
+  .dark-mode {
+    @apply bg-black text-white;
+  }
+}
+
+/* Accessibility */
+@media (prefers-reduced-motion: reduce) {
+  * {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+/* Print styles */
+@media print {
+  .no-print {
+    display: none !important;
+  }
+}
